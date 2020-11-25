@@ -907,10 +907,11 @@ function Base() {
         homeTopImg.length > 0 ?
             (homeTopImg.length > 1 ? bgImg = homeTopImg[tools.randomNum(0, homeTopImg.length - 1)] : bgImg = homeTopImg[0])
             : bgImg = "";
-        $('.main-header').css({
+        $('.main-header-background').css({
             'background': '#222 url("'+encodeURI(bgImg)+'")  center center no-repeat',
             'background-size': 'cover'
         });
+        
 
         bndongJs.setHitokoto();
         bndongJs.scrollMonitor();
@@ -1125,6 +1126,14 @@ function Base() {
         bndongJs.setArticleInfoAuthor();
         timeIds.blogPostCategoryTId = window.setInterval( bndongJs.setArticleInfoClass, 1000 );
         timeIds.entryTagTId         = window.setInterval( bndongJs.setArticleInfoTag, 1000 );
+
+        // 设置文章头部图片动效
+        $('.main-header-background').mouseenter(function(){
+            $('.main-header-background').css('filter', 'blur(2px)');
+        });
+        $('.main-header-background').mouseleave(function(){
+            $('.main-header-background').css('filter', 'blur(0px)');
+        });
 
         bndongJs.setDomHomePosition();
     };

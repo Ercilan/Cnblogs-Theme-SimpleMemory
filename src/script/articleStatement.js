@@ -71,7 +71,7 @@ $(document).ready(function(){
         source  = url;
     }
 
-    bottom_html += '<span class="essaySuffix-right-title">本文作者</span>：<strong><span style="font-size: 12px;">';
+    bottom_html += '<span class="essaySuffix-right-title">本文作者</span>：<strong><span>';
     bottom_html += '<a href="'+source+'" target="_blank">'+author+'</a></span></strong> <br>';
     bottom_html += '<span style="font-weight: bold; white-space:nowrap;">本文链接</span>：<a href="'+source+'" target="_blank">'+source+'</a><br>';
 
@@ -85,7 +85,7 @@ $(document).ready(function(){
     // 设置版权声明
     var copyrightHtml = window.cnblogsConfig.essaySuffix.copyrightHtml
         ? window.cnblogsConfig.essaySuffix.copyrightHtml
-        : '本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" alt="BY-NC-SA" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！';
+        : '本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" alt="BY-NC-SA" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议。<font color="red">转载请注明出处</font>！';
 
     bottom_html += '<span class="essaySuffix-right-title">版权声明</span>：' + copyrightHtml + '<br>';
 
@@ -94,7 +94,7 @@ $(document).ready(function(){
         ? window.cnblogsConfig.essaySuffix.supportHtml
         : '如果您觉得文章对您有帮助，可以点击文章右下角<strong><span style="color: #ff0000; font-size: 12pt;">【<a id="post-up" onclick="votePost('+uid+',\'Digg\')" href="javascript:void(0);">推荐</a>】</span></strong>一下。您的鼓励是博主的最大动力！';
 
-    bottom_html += '<span class="essaySuffix-right-title">声援博主</span>：' + supportHtml + '<br>';
+    bottom_html += '<span class="essaySuffix-right-title">支持博主</span>：' + supportHtml + '<br>';
 
     bottom_html += '</div>';
     bottom_html += '<div style="clear: both;"></div>';
