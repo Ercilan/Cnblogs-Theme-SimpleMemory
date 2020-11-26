@@ -8,7 +8,7 @@ function Base() {
 
     const bndongJs     = this,
           tools        = new myTools,
-          isHome       = !!$('#topics').length;
+          isHome       = !$('#topics').length;
 
     let progressBar  = new ToProgress(window.cnblogsConfig.progressBar, '#bottomProgressBar'), // 进度条
         temScroll    = 0,  // 上一次页面滚动位置
@@ -64,7 +64,7 @@ function Base() {
         if (window.cnblogsConfig.fontIconExtend !== '') tools.dynamicLoadingCss(window.cnblogsConfig.fontIconExtend);
 
         // 页面初始化
-        isHome ? bndongJs.notHomeInit() : bndongJs.homeInit();
+        isHome ? bndongJs.homeInit() : bndongJs.notHomeInit() ;
     };
 
     /**
@@ -73,7 +73,7 @@ function Base() {
     this.loadingAfterInit = function () {
 
         // 页面初始化
-        isHome ? bndongJs.notHomeInitAfter() : bndongJs.homeInitAfter();
+        isHome ?  bndongJs.homeInitAfter() : bndongJs.notHomeInitAfter();
 
         // 添加页脚
         bndongJs.addFooter();
