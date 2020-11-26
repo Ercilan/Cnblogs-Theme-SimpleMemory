@@ -85,7 +85,7 @@ $(document).ready(function(){
     // 设置版权声明
     var copyrightHtml = window.cnblogsConfig.essaySuffix.copyrightHtml
         ? window.cnblogsConfig.essaySuffix.copyrightHtml
-        : '本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" alt="BY-NC-SA" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议。<font color="red">转载请注明出处</font>！';
+        : '本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" alt="BY-NC-SA" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议。<span style="color:red;font-weight:bold;">转载请注明出处</span>！';
 
     bottom_html += '<span class="essaySuffix-right-title">版权声明</span>：' + copyrightHtml + '<br>';
 

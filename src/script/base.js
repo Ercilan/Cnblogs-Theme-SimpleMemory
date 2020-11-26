@@ -1127,14 +1127,6 @@ function Base() {
         timeIds.blogPostCategoryTId = window.setInterval( bndongJs.setArticleInfoClass, 1000 );
         timeIds.entryTagTId         = window.setInterval( bndongJs.setArticleInfoTag, 1000 );
 
-        // 设置文章头部图片动效
-        $('.main-header-background').mouseenter(function(){
-            $('.main-header-background').css('filter', 'blur(2px)');
-        });
-        $('.main-header-background').mouseleave(function(){
-            $('.main-header-background').css('filter', 'blur(0px)');
-        });
-
         bndongJs.setDomHomePosition();
     };
 
@@ -1287,10 +1279,18 @@ function Base() {
             : bgImg = "";
 
 
-        $('.main-header').css({
-            'height': '40vh',
+        $('.main-header-background').css({
+            //'height': '40vh',
             'background': '#222 url("'+encodeURI(bgImg)+'")  center center no-repeat',
             'background-size': 'cover'
+        });
+        
+        // 设置文章头部图片动效
+        $('.main-header-background').mouseenter(function(){
+            $('.main-header-background').css('filter', 'blur(2px)');
+        });
+        $('.main-header-background').mouseleave(function(){
+            $('.main-header-background').css('filter', 'blur(0px)');
         });
 
         $('#homeTopTitle').hide();
