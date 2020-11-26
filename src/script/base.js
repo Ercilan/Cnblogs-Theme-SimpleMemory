@@ -1280,16 +1280,16 @@ function Base() {
 
 
         $('.main-header-background').css({
-            //'height': '40vh',
+            'height': '40vh',
             'background': '#222 url("'+encodeURI(bgImg)+'")  center center no-repeat',
             'background-size': 'cover'
         });
         
         // 设置文章头部图片动效
-        $('.main-header-background').mouseenter(function(){
+        $('.main-header').mouseenter(function(){
             $('.main-header-background').css('filter', 'blur(2px)');
         });
-        $('.main-header-background').mouseleave(function(){
+        $('.main-header').mouseleave(function(){
             $('.main-header-background').css('filter', 'blur(0px)');
         });
 
