@@ -1278,7 +1278,7 @@ function Base() {
             (essayTopImg.length > 1 ? bgImg = essayTopImg[tools.randomNum(0, essayTopImg.length - 1)] : bgImg = essayTopImg[0])
             : bgImg = "";
 
-
+        $('.main-header').css('height', '40vh');
         $('.main-header-background').css({
             'height': '40vh',
             'background': '#222 url("'+encodeURI(bgImg)+'")  center center no-repeat',
