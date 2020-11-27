@@ -4,6 +4,7 @@
  * https://www.cnblogs.com/bndong/
  * @author: BNDong, dbnuo@foxmail.com
  **/
+
 function Base() {
 
     const bndongJs     = this,
@@ -12,6 +13,7 @@ function Base() {
 
     let progressBar  = new ToProgress(window.cnblogsConfig.progressBar, '#bottomProgressBar'), // 进度条
         temScroll    = 0,  // 上一次页面滚动位置
+        isPhone = parseFloat(document.body.clientWidth) < 1350,
 
         /** 定时器 **/
         timeIds    = {
@@ -245,6 +247,7 @@ function Base() {
      */
     this.resizeMonitor = function() {
         const bodyWidth = parseFloat(document.body.clientWidth), sideToolbar = $('#sideToolbar');
+        console.log("是手机吗", isPhone);
         bndongJs.setDomHomePosition();
 
         // 设置目录插件左右位置
@@ -1206,7 +1209,7 @@ function Base() {
      */
     this.getPostMetaHtml = function (postDescText) {
         let info = bndongJs.getPostMetaInfo(postDescText);
-        let html = '<span class="postMeta"><i class="iconfont icon-time1"></i>发表于 '+info.date+'' +
+        let html = '<span class="postMeta"><i class="iconfont icon-time1"></i>发表于 '+info.date+'<br>' +
             '<i class="iconfont icon-browse"></i>阅读：'+info.vnum+'' +
             '<i class="iconfont icon-interactive"></i>评论：'+info.cnum+'' +
             '<i class="iconfont icon-hot"></i>推荐：'+info.tnum+'' +
