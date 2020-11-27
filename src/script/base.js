@@ -9,11 +9,11 @@ function Base() {
 
     const bndongJs     = this,
           tools        = new myTools,
-          isHome       = !$('#topics').length;
+          isHome       = !$('#topics').length,
+          isPhone = parseFloat(document.body.clientWidth) < 1350;
 
     let progressBar  = new ToProgress(window.cnblogsConfig.progressBar, '#bottomProgressBar'), // 进度条
         temScroll    = 0,  // 上一次页面滚动位置
-        isPhone = parseFloat(document.body.clientWidth) < 1350,
 
         /** 定时器 **/
         timeIds    = {
