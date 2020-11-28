@@ -350,6 +350,10 @@ function Base() {
                         }
                         break;
 
+                    case '#goHome>.attentionSpan':
+                        console.log("本站主页是："+ $('#lnkBlogLogo').attr('href'));
+                        window.location.href=$('#lnkBlogLogo').attr('href');
+                        break;
                     case '.attentionSpan':
 
                         // 点击关注
@@ -584,7 +588,7 @@ function Base() {
                 menuScorerank = $('#sb-sidebarScorerank');
 
             if (scorerank.length > 0 && menuScorerank.html() === ''){
-                menuScorerank.html(getMenuData(scorerank, 'icon-collection_fill')).prev('.m-list-title').show();
+                menuScorerank.html(getMenuData(scorerank, 'icon-collection-fill')).prev('.m-list-title').show();
                 bndongJs.clearIntervalTimeId(timeIds.setSidebarScorerankTId);
             }
         }
@@ -595,7 +599,7 @@ function Base() {
                 menuSidebar = $('#sb-sidebarRecentposts');
 
             if (sidebar.length > 0 && menuSidebar.html() === ''){
-                menuSidebar.html(getMenuData(sidebar, 'icon-time_fill')).prev('.m-list-title').show();
+                menuSidebar.html(getMenuData(sidebar, 'icon-time-fill')).prev('.m-list-title').show();
                 bndongJs.clearIntervalTimeId(timeIds.setMenuSidebarTId);
             }
         }
@@ -606,7 +610,7 @@ function Base() {
                 menuToptags = $('#sb-toptags');
 
             if (toptags.length > 0 && menuToptags.html() === '') {
-                menuToptags.html(getMenuData(toptags, 'icon-label_fill')).prev('.m-list-title').show();
+                menuToptags.html(getMenuData(toptags, 'icon-label-fill')).prev('.m-list-title').show();
                 bndongJs.clearIntervalTimeId(timeIds.setMenuToptagsTId);
             }
         }
@@ -617,7 +621,7 @@ function Base() {
                 menuClassify = $('#sb-classify');
 
             if (sbClassify.length > 0 && menuClassify.html() === '') {
-                menuClassify.html(getMenuData(sbClassify, 'icon-marketing_fill')).prev('.m-list-title').show();
+                menuClassify.html(getMenuData(sbClassify, 'icon-leibie-fill')).prev('.m-list-title').show();
                 bndongJs.clearIntervalTimeId(timeIds.setMenuClassifyTId);
             }
         }
@@ -628,7 +632,7 @@ function Base() {
                 menuArticleCategory = $('#sb-ArticleCategory');
 
             if (sbArticleCategory.length > 0 && menuArticleCategory.html() === '') {
-                menuArticleCategory.html(getMenuData(sbArticleCategory, 'icon-marketing_fill')).prev('.m-list-title').show();
+                menuArticleCategory.html(getMenuData(sbArticleCategory, 'icon-leibie-fill')).prev('.m-list-title').show();
                 bndongJs.clearIntervalTimeId(timeIds.setMenuArticleCategoryTId);
             }
         }
@@ -639,7 +643,7 @@ function Base() {
                 menuRecord = $('#sb-record');
 
             if (sbRecord.length > 0 && menuRecord.html() === '') {
-                menuRecord.html(getMenuData(sbRecord, 'icon-task_fill')).prev('.m-list-title').show();
+                menuRecord.html(getMenuData(sbRecord, 'icon-calendar-fill')).prev('.m-list-title').show();
                 bndongJs.clearIntervalTimeId(timeIds.setMenuRecordTId);
             }
         }
@@ -650,7 +654,7 @@ function Base() {
                 menuArticle = $('#sb-articlearchive');
 
             if (sbArticle.length > 0 && menuArticle.html() === '') {
-                menuArticle.html(getMenuData(sbArticle, 'icon-document_fill')).prev('.m-list-title').show();
+                menuArticle.html(getMenuData(sbArticle, 'icon-leibie3')).prev('.m-list-title').show();
                 bndongJs.clearIntervalTimeId(timeIds.setMenuArticleTId);
             }
         }
@@ -661,7 +665,7 @@ function Base() {
                 menuTopview = $('#sb-topview');
 
             if (sbTopview.length > 0 && menuTopview.html() === '') {
-                menuTopview.html(getMenuData(sbTopview, 'icon-browse_fill')).prev('.m-list-title').show();
+                menuTopview.html(getMenuData(sbTopview, 'icon-eye-fill')).prev('.m-list-title').show();
                 bndongJs.clearIntervalTimeId(timeIds.setMenuTopviewTId);
             }
         }
@@ -672,7 +676,7 @@ function Base() {
                 menuTopDiggPosts = $('#sb-topDiggPosts');
 
             if (topDiggPosts.length > 0 && menuTopDiggPosts.html() === '') {
-                menuTopDiggPosts.html(getMenuData(topDiggPosts, 'icon-like_fill')).prev('.m-list-title').show();
+                menuTopDiggPosts.html(getMenuData(topDiggPosts, 'icon-like-fill')).prev('.m-list-title').show();
                 bndongJs.clearIntervalTimeId(timeIds.setMenuTopDiggPostsTId);
             }
         }
@@ -683,7 +687,7 @@ function Base() {
                 menuRecentComments = $('#sb-recentComments');
 
             if (recentComments.length > 0 && menuRecentComments.html() === '') {
-                menuRecentComments.html(getMenuCommentsData(recentComments, 'icon-pinglunzu')).prev('.m-list-title').show();
+                menuRecentComments.html(getMenuCommentsData(recentComments, 'icon-taolun')).prev('.m-list-title').show();
                 bndongJs.clearIntervalTimeId(timeIds.setMenuRecentCommentsTId);
             }
         }
@@ -1233,7 +1237,7 @@ function Base() {
         if (obj.length > 0) {
             $.each(obj, function () {
                 let tag = $(this);
-                tag.prepend('<span class="iconfont icon-marketing_fill"></span>');
+                tag.prepend('<span class="iconfont icon-leibie-fill"></span>');
                 $('#articleInfo').append('<a href="'+tag.attr('href')+'" target="_blank"><span class="article-info-tag article-tag-class-color">'+(tag.text())+'</span></a>');
             });
             bndongJs.clearIntervalTimeId(timeIds.blogPostCategoryTId);
@@ -1248,7 +1252,7 @@ function Base() {
         if (obj.length > 0) {
             $.each(obj, function () {
                 let tag = $(this);
-                tag.prepend('<span class="iconfont icon-label_fill"></span>');
+                tag.prepend('<span class="iconfont icon-label-fill"></span>');
                 $('#articleInfo').append('<a href="'+tag.attr('href')+'" target="_blank"><span class="article-info-tag article-tag-color">'+(tag.text())+'</span></a>');
             });
             bndongJs.clearIntervalTimeId(timeIds.entryTagTId);
@@ -1261,7 +1265,7 @@ function Base() {
     this.initCatalog = function() {
         const sideToolbar = $('#sideToolbar');
         if (sideToolbar.length > 0) {
-            sideToolbar.prepend('<span class="catalog-btn catalog-btn-shadow"><i class="iconfont icon-mulu"></i></span>').fadeIn(300);
+            sideToolbar.prepend('<span class="catalog-btn catalog-btn-shadow"><i class="iconfont icon-file"></i></span>').fadeIn(300);
             $('.catalog-btn').click(function () {
                 let sideCatalogBg = $('.sideCatalogBg');
                 if (sideCatalogBg.is(':hidden')) {
@@ -1647,7 +1651,7 @@ function Base() {
 
 
             // 添加返回主页
-            rightMenu.prepend('<div id="goHome" clickflg="true" onclick="javascript:window.location.href=\'' + $('#navblog-myblog-icon').attr('href') +'\'"><span class="rightMenuSpan attentionSpan">返回主页</span><i class="iconfont icon-home"></i></div>');
+            rightMenu.prepend('<div id="goHome"><span class="rightMenuSpan attentionSpan">返回主页</span><i class="iconfont icon-home"></i></div>');
             bndongJs.rightMenuMous('#goHome', '#goHome>.attentionSpan');
 
             // 添加踩burynum
