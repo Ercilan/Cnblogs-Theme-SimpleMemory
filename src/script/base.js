@@ -7,6 +7,8 @@
 
 function Base() {
 
+    console.log('测试已开启')
+
     const bndongJs     = this,
           tools        = new myTools,
           isHome       = !$('#topics').length,
@@ -247,7 +249,9 @@ function Base() {
      */
     this.resizeMonitor = function() {
         const bodyWidth = parseFloat(document.body.clientWidth), sideToolbar = $('#sideToolbar');
-        console.log("是手机吗", isPhone);
+        let mIsPhone = parseFloat(document.body.clientWidth) < 1350;
+        console.log("全局是手机吗", isPhone);
+        console.log(document.body.clientWidth + " 是手机吗", mIsPhone);
         bndongJs.setDomHomePosition();
 
         // 设置目录插件左右位置
@@ -1152,6 +1156,9 @@ function Base() {
             });
         });
 
+        // 添加小屏幕设备换行
+        $('#green_channel_favorite').after('<br class="small-device-adapt">');
+
         // 设置右下角菜单
         timeIds.setNotHomeRightMenuTId = window.setInterval( bndongJs.addNotHomeRightMenu, 1000 );
 
@@ -1209,7 +1216,7 @@ function Base() {
      */
     this.getPostMetaHtml = function (postDescText) {
         let info = bndongJs.getPostMetaInfo(postDescText);
-        let html = '<span class="postMeta"><i class="iconfont icon-time1"></i>发表于 '+info.date+'' +
+        let html = '<span class="postMeta"><i class="iconfont icon-time1"></i>发表于 '+info.date+'<br class="small-device-adapt">' +
             '<i class="iconfont icon-browse"></i>阅读：'+info.vnum+'' +
             '<i class="iconfont icon-interactive"></i>评论：'+info.cnum+'' +
             '<i class="iconfont icon-hot"></i>推荐：'+info.tnum+'' +
