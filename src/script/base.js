@@ -79,12 +79,6 @@ function Base() {
         // 页面初始化
         isHome ?  bndongJs.homeInitAfter() : bndongJs.notHomeInitAfter();
 
-        // 添加页脚
-        bndongJs.addFooter();
-
-        // 背景动画
-        if (window.cnblogsConfig.bgAnimationRendered) require(['RibbonsEffect']);
-
         // 更换网站图标
         let shortcutIcon = $('link[rel="shortcut icon"]');
         if (shortcutIcon.length) {
@@ -95,6 +89,13 @@ function Base() {
             linkObject.href = window.cnblogsConfig.webpageIcon;
             document.getElementsByTagName("head")[0].appendChild(linkObject);
         }
+
+        // 添加页脚
+        bndongJs.addFooter();
+
+        // 背景动画
+        if (window.cnblogsConfig.bgAnimationRendered) require(['RibbonsEffect']);
+
 
         // 滚动监听
         $(window).scroll( function() { bndongJs.scrollMonitor(); });
@@ -358,7 +359,7 @@ function Base() {
                                 if ('关注成功' === $.trim($('#p_b_follow').text())) {
                                     parentObject.attr('clickflg', 'true');
                                     subObject.text('已关注');
-                                    parentObject.find('i').removeClass('icon-dianzan').addClass('icon-dianzan1');
+                                    parentObject.find('i').removeClass('icon-like').addClass('icon-liked');
                                 }
                             }
                         }
@@ -1105,9 +1106,9 @@ function Base() {
 
             let attHtml = '';
             if (!clickStr || clickStr.indexOf('unfollow') > 0) {
-                attHtml = '<div id="attention" clickflg="true"><span class="rightMenuSpan attentionSpan">已关注</span><i class="iconfont icon-dianzan1"></i></div>';
+                attHtml = '<div id="attention" clickflg="true"><span class="rightMenuSpan attentionSpan">已关注</span><i class="iconfont icon-liked"></i></div>';
             } else {
-                attHtml = '<div id="attention" onclick="' + clickStr.replace('unfollow', 'follow') + '" clickflg="false"><span class="rightMenuSpan attentionSpan">关注</span><i class="iconfont icon-dianzan"></i></div>';
+                attHtml = '<div id="attention" onclick="' + clickStr.replace('unfollow', 'follow') + '" clickflg="false"><span class="rightMenuSpan attentionSpan">关注</span><i class="iconfont icon-like"></i></div>';
             }
 
             rightMenu.prepend(attHtml);
@@ -1644,14 +1645,19 @@ function Base() {
 
             if ($('#toUpDown').length === 0 && $('#attention').length === 0) bndongJs.addHomeRightMenu();
 
-            // 添加踩
+
+            // 添加返回主页
+            rightMenu.prepend('<div id="goHome" clickflg="true" onclick="javascript:window.location.href=\'' + $('#navblog-myblog-icon').attr('href') +'\'"><span class="rightMenuSpan attentionSpan">返回主页</span><i class="iconfont icon-home"></i></div>');
+            bndongJs.rightMenuMous('#goHome', '#goHome>.attentionSpan');
+
+            // 添加踩burynum
             if ($('#div_digg').length > 0) {
-                let rightBuryitHtml = '<div id="rightBuryit" clickflg="false" onclick="' + ($(".buryit").attr("onclick")) + '"><span class="rightMenuSpan rightBuryitSpan">' + $('#bury_count').text() + '</span><i class="iconfont icon-buzan"></i></div>';
+                let rightBuryitHtml = '<div id="rightBuryit" clickflg="false" onclick="' + ($(".buryit").attr("onclick")) + '"><span class="rightMenuSpan rightBuryitSpan">' + $('#bury_count').text() + '</span><i class="iconfont icon-bad"></i></div>';
                 rightMenu.prepend(rightBuryitHtml);
                 bndongJs.rightMenuMous('#rightBuryit', '.rightBuryitSpan');
 
-                // 添加顶
-                let rightDiggitHtml = '<div id="rightDiggit" clickflg="false" onclick="' + ($(".diggit").attr("onclick")) + '"><span class="rightMenuSpan rightDiggitSpan">' + $('#digg_count').text() + '</span><i class="iconfont icon-zan1"></i></div>';
+                // 添加顶diggnum
+                let rightDiggitHtml = '<div id="rightDiggit" clickflg="false" onclick="' + ($(".diggit").attr("onclick")) + '"><span class="rightMenuSpan rightDiggitSpan">' + $('#digg_count').text() + '</span><i class="iconfont icon-good"></i></div>';
                 rightMenu.prepend(rightDiggitHtml);
                 bndongJs.rightMenuMous('#rightDiggit', '.rightDiggitSpan');
             }
@@ -1661,7 +1667,7 @@ function Base() {
                 let rightDashangHtml = '<div id="rightDashang" clickflg="false"><span class="rightMenuSpan rightDanshanSpan"><div class="ds-pay">' +
                     (window.cnblogsConfig.reward.alipay ? '<div class="ds-alipay"><img src="'+window.cnblogsConfig.reward.alipay+'"><span>Alipay</span></div>' : '') +
                     (window.cnblogsConfig.reward.wechatpay ? '<div class="ds-wecat"><img src="'+window.cnblogsConfig.reward.wechatpay+'"><span>WeChat</span></div>' : '') +
-                    '</div></span><i class="iconfont icon-dashang2"></i></div>';
+                    '</div></span><i class="iconfont icon-shang"></i></div>';
                 rightMenu.prepend(rightDashangHtml);
                 bndongJs.rightMenuMous('#rightDashang', '.rightDanshanSpan');
             }
