@@ -99,7 +99,6 @@ require.config({
             deps: [
                 'tools',
                 'css!//at.alicdn.com/t/font_2234892_hq5o0z56wcw.css', // 阿里云字体图标
-                'css!//at.alicdn.com/t/font_2234916_ao3wki4jpih.css', // 品牌体图标
                 'css!'+getJsDelivrUrl('google-fonts.css'), // 谷歌字体
             ]
         },
