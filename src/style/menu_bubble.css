@@ -56,7 +56,6 @@ body{
 .menu-button {
     position: fixed;
     z-index: 1000;
-    margin: 1em;
     padding: 0;
     width: 100px;
     height: 32px;
