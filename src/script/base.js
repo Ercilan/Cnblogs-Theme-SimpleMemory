@@ -137,7 +137,7 @@ function Base() {
         setMenuData.setCustomData();
 
         // 设置菜单展开收缩
-        $('.m-list-title-select').click(function(){ $(this).parents('.m-list-title').next('.m-icon-list').slideToggle(500) });
+        $('.m-list-title-sorting').click(function(){ $(this).parents('.m-list-title').next('.m-icon-list').slideToggle(500) });
 
         // 添加页面特效控制
         // bndongJs.setPageAnimationControl();
@@ -1443,7 +1443,7 @@ function Base() {
                     obj.wrap('<code-box id="' + id + '" style="position: relative;display: block;"></code-box>');
                     obj.attr('id', 'pre-' + id);
 
-                    let html = '<button code-id="' + id + '" type="button" class="clipboard code-copay-btn" data-clipboard-action="copy" data-clipboard-target="#pre-' + id + '" aria-label="复制代码" ><i class="iconfont icon-fuzhi1"></i></button>';
+                    let html = '<button code-id="' + id + '" type="button" class="clipboard code-copay-btn" data-clipboard-action="copy" data-clipboard-target="#pre-' + id + '" aria-label="复制代码" ><i class="iconfont icon-copy1"></i></button>';
 
                     $('#'+id).prepend(html);
                 });
