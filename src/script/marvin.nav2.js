@@ -13,6 +13,7 @@ $(document).ready(function () {
         q = true,
         r = false,
         s = $('#' + c),
+        p = parseFloat(document.body.clientWidth) < 1350 ? true : false,
        tools = new myTools;
 
     if (s.length === 0) return;
@@ -77,7 +78,7 @@ $(document).ready(function () {
     $('#' + f + '>ul').html(j);
     b.data('spy', 'scroll');
     b.data('target', '.sideCatalogBg');
-
+    p && b.data('offset', '55');
     b.scrollspy({
         target: '.sideCatalogBg'
     });
@@ -88,7 +89,7 @@ $(document).ready(function () {
         titleParent = titleH.parent('span.header__span');
         title = titleParent.length > 0 ? titleParent : titleH;
         if (title.length>0) {
-            let offsetY = parseFloat(document.body.clientWidth) < 1350 ? 55 : 2;
+            let offsetY = p ? 55 : 2;
             tools.actScroll(title.offset().top - offsetY, 500);
         }
     });
