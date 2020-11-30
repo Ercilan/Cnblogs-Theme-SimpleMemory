@@ -78,9 +78,10 @@ $(document).ready(function () {
     $('#' + f + '>ul').html(j);
     b.data('spy', 'scroll');
     b.data('target', '.sideCatalogBg');
-    p && b.data('offset', '55px');
+    let offsetTop = p ? 55:0;
     b.scrollspy({
-        target: '.sideCatalogBg'
+        target: '.sideCatalogBg',
+        offset: offsetTop
     });
     let $sideCatelog = $('#' + e);
 
