@@ -78,7 +78,7 @@ $(document).ready(function () {
     $('#' + f + '>ul').html(j);
     b.data('spy', 'scroll');
     b.data('target', '.sideCatalogBg');
-    p && b.data('offset', '55');
+    p && b.data('offset', '100');
     b.scrollspy({
         target: '.sideCatalogBg'
     });
