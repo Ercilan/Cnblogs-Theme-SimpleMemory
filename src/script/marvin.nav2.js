@@ -88,8 +88,7 @@ $(document).ready(function () {
         titleParent = titleH.parent('span.header__span');
         title = titleParent.length > 0 ? titleParent : titleH;
         if (title.length>0) {
-            let offsetY = parseFloat(document.body.clientWidth) < 1350 ? 53 : 2;
-            console.log('偏移量：',offsetY);
+            let offsetY = parseFloat(document.body.clientWidth) < 1350 ? 55 : 2;
             tools.actScroll(title.offset().top - offsetY, 500);
         }
     });
