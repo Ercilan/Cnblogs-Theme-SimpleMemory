@@ -89,7 +89,7 @@ $(document).ready(function () {
         let obj = $(this), title, titleH = $(':header[tid="'+obj.find('a').attr('goto')+'"]'),
         titleParent = titleH.parent('span.header__span');
         title = titleParent.length > 0 ? titleParent : titleH;
-        if (title.length>0) {
+        if (title.length > 0) {
             let offsetY = p ? 55 : 2;
             tools.actScroll(title.offset().top - offsetY, 500);
         }
