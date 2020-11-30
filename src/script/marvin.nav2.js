@@ -87,8 +87,10 @@ $(document).ready(function () {
         let obj = $(this), title, titleH = $(':header[tid="'+obj.find('a').attr('goto')+'"]'),
         titleParent = titleH.parent('span.header__span');
         title = titleParent.length > 0 ? titleParent : titleH;
-
-        title.length && tools.actScroll(title.offset().top + 3, 500);
+        if (title.length>0) {
+            let offsetY = parseFloat(document.body.clientWidth) < 1350 ? 53 : 3;
+            tools.actScroll(title.offset().top + offsetY, 500);
+        }
     });
 
     let nav_li = $('#sideCatalog-catalog').find('ul li');
