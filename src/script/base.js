@@ -227,7 +227,13 @@ function Base() {
                 // 设置菜单按钮
                 if (!openButton.hasClass('menu-button-scroll')) {
                     openButton.addClass('menu-button-scroll');
-                    openButton.text('');
+                    openButton.wrapAll('<div class="top-navbar"></div>');
+                    openButton.parent().fadeIn(300);
+                    let cataBtn = $('.catalog-btn');
+                    cataBtn.removeClass('catalog-btn-shadow').addClass('top-menu');
+                    cataBtn.animate({'padding-left':'30px'},200);
+                    cataBtn.children('.iconfont.icon-file').css({'color':'#fff','position':'absolute','left':'6px','top':'2px'});
+                    cataBtn.append('CONTENT');
                 }
             }
 
@@ -237,8 +243,12 @@ function Base() {
 
                 // 设置菜单按钮
                 if (openButton.hasClass('menu-button-scroll')) {
+                    $('#open-button').unwrap();
                     openButton.removeClass('menu-button-scroll');
-                    openButton.text('MENU');
+                    let cataBtn = $('.catalog-btn');
+                    cataBtn.removeClass('top-menu').addClass('catalog-btn-shadow');
+                    cataBtn.html('<i class="iconfont icon-file"></i>');
+                    cataBtn.animate({'padding-left':'13px'},200);
                 }
             }
         }
@@ -896,10 +906,11 @@ function Base() {
 
         // 设置加载主题信息
         function setTheme() {
-            $('#themeInfo').html('Theme version: <a href="'+lHref
+            let a = '', b = '';
+            $('#themeInfo').html('Theme version: <a href="'+a
                 +'" target="_blank" style="color: #888;text-decoration: underline;">'
                 +(window.cnblogsConfig.CnVersions).substring(0,7)+'</a>'
-                +' / Loading theme version: <a href="'+rHref
+                +' / Loading theme version: <a href="'+b
                 +'" target="_blank" style="color: #888;text-decoration: underline;">'
                 +(window.cnblogsConfig.GhVersions).substring(0,7)+'</a>'
             );
@@ -939,6 +950,11 @@ function Base() {
         $('.scroll-down').click(function () {
             let endScroll;
             endScroll = $('#home').offset().top + 10; tools.actScroll(endScroll, 1000);});
+
+        // 点击整体进入文章
+        $('.postCon').click(function () {
+            window.location.href = $(this).find('.c_b_p_desc_readmore').attr('href');
+        });
 
         // 设置右下角菜单
         timeIds.setHomeRightMenuTId = window.setInterval( bndongJs.addHomeRightMenu, 1000 );
@@ -1142,7 +1158,7 @@ function Base() {
         bndongJs.setDomHomePosition();
     };
 
-    this.notHomeInitAfter = function () {
+    this.notHomeInitAfter = function() {
         bndongJs.setNotHomeTopImg();
 
         // 验证是否是书单文章
@@ -1153,7 +1169,7 @@ function Base() {
 
         // 初始化文章目录
         require(['title', 'marvin', 'articleStatement'], function() {
-            timeIds.setCatalogTId = window.setInterval( bndongJs.initCatalog, 1000 );
+            timeIds.setCatalogTId = window.setInterval(bndongJs.initCatalog, 1000);
             bndongJs.scrollMonitor();
             $('#sideCatalog-catalog').mCustomScrollbar({
                 theme:"minimal-dark",
@@ -1164,8 +1180,15 @@ function Base() {
         // 添加小屏幕设备换行
         $('#green_channel_favorite').after('<br class="small-device-adapt">');
 
+        // 添加编辑菜单
+        let visitor = $('#navblog-myblog-icon').attr('href').replace(/(\.|\/)/g, "\\$1");
+        let articleId = new RegExp('^' + visitor + 'p\/(\\d+)\\.html.*').exec(window.location.href);
+        if(articleId && articleId.length > 0) {
+            $('#m-nav-list').append('<li><a href="https://i.cnblogs.com/posts/edit;postId=' + articleId[1] + '" target="_blank" ref="nofollow"><i class="iconfont icon-qianbi-fill"></i>编辑</a></li>');  
+        }
+
         // 设置右下角菜单
-        timeIds.setNotHomeRightMenuTId = window.setInterval( bndongJs.addNotHomeRightMenu, 1000 );
+        timeIds.setNotHomeRightMenuTId = window.setInterval(bndongJs.addNotHomeRightMenu, 1000);
 
         bndongJs.setCommentStyle();
     };
@@ -1266,14 +1289,24 @@ function Base() {
         const sideToolbar = $('#sideToolbar');
         if (sideToolbar.length > 0) {
             sideToolbar.prepend('<span class="catalog-btn catalog-btn-shadow"><i class="iconfont icon-file"></i></span>').fadeIn(300);
-            $('.catalog-btn').click(function () {
+            let cataBtn = $('.catalog-btn');
+            let topNav = $('.top-navbar');
+            // 刷新时，窗口在网页中间位置
+            if (topNav.length>0&&topNav.is(':visible')&&topNav.css('width')==$('.main-header').css('width')){
+                cataBtn.removeClass('catalog-btn-shadow').addClass('top-menu');
+                cataBtn.animate({'padding-left':'30px'},200);
+                cataBtn.children('.iconfont.icon-file').css({'color':'#fff','position':'absolute','left':'6px','top':'2px'});
+                cataBtn.append('CONTENT');
+            }
+
+            cataBtn.click(function () {
                 let sideCatalogBg = $('.sideCatalogBg');
                 if (sideCatalogBg.is(':hidden')) {
                     sideCatalogBg.fadeIn(300);
-                    $(this).removeClass('catalog-btn-shadow');
+                    //$(this).removeClass('catalog-btn-shadow');
                 } else {
                     sideCatalogBg.fadeOut(300);
-                    $(this).addClass('catalog-btn-shadow');
+                    //$(this).addClass('catalog-btn-shadow');
                 }
             });
             bndongJs.resizeMonitor();
@@ -1449,8 +1482,8 @@ function Base() {
                 });
 
                 $('code-box button').click(function () {
-                    $(this).find('i').removeClass('icon-fuzhi1').addClass('icon-right');
-                    setTimeout("$('code-box button[code-id="+$(this).attr('code-id')+"] i').removeClass('icon-right').addClass('icon-fuzhi1')", 1500);
+                    $(this).find('i').removeClass('icon-copy1').addClass('icon-select');
+                    setTimeout("$('code-box button[code-id="+$(this).attr('code-id')+"] i').removeClass('icon-select').addClass('icon-copy1')", 1500);
                 });
 
                 $('code-box').on({
